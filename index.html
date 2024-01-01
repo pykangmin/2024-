@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2024년 새해 관심사 선택</title>
+    <script src="main.js"></script>
+    <link href="main.css" rel="stylesheet" type="text/css"/>
+    <script>
+        var selectedCount = 0;
+
+        function toggleSelection(button) {
+            var interest = button.textContent;
+            if (button.classList.contains('selected')) {
+                button.classList.remove('selected');
+                selectedInterests = selectedInterests.filter(function(value) {
+                    return value !== interest;
+                });
+            } else {
+                if (selectedInterests.length < 3) {
+                    button.classList.add('selected');
+                    selectedInterests.push(interest);
+                }
+            }
+
+            updateSlots();
+            
+            document.querySelectorAll('.interest-button').forEach(function(btn) {
+                btn.disabled = selectedCount >= 3 && !btn.classList.contains('selected');
+            });
+        }
+
+        function refreshPage() {
+            window.location.reload();
+        }
+    </script>
+    <style>
+        .interest-button.selected {
+            background-color: #4CAF50; /* Selected button color */
+            color: white;
+        }
+        .button-row {
+            display: flex; /* 버튼을 가로로 배열합니다 */
+            justify-content: flex-start; /* 버튼을 왼쪽 정렬합니다 */
+            margin-bottom: 10px; /* 줄 사이의 여백을 추가합니다 */
+        }
+        .interest-button {
+            margin-right: 5px; /* 버튼 사이의 간격을 추가합니다 */
+        }
+        .button-row:last-child .interest-button:last-child {
+            margin-right: 0; /* 마지막 버튼의 오른쪽 여백을 제거합니다 */
+        }
+        #slots {
+            margin-top: 10px;
+        }
+        /* 필요에 따라 더 많은 스타일을 추가하세요 */
+    </style>
+</head>
+<body>
+    <div>
+        <p style="font-size: 36px;">이름: <input type="text" id="name"></p>
+        <p style="font-size: 36px;">나이: <input type="number" id="age"></p>
+        <p style="font-size: 36px;">새해에 관심있는 분야를 선택해주세요 (최대 3개):</p>
+        <div class="button-row">
+            <button class="interest-button" onclick="toggleSelection(this)">건강</button>
+            <button class="interest-button" onclick="toggleSelection(this)">금전</button>
+            <button class="interest-button" onclick="toggleSelection(this)">대학합격</button>
+            <button class="interest-button" onclick="toggleSelection(this)">연애</button>
+        </div>
+        <div class="button-row">
+            <button class="interest-button" onclick="toggleSelection(this)">인간관계</button>
+            <button class="interest-button" onclick="toggleSelection(this)">직업</button>
+            <button class="interest-button" onclick="toggleSelection(this)">학업</button>
+        </div>
+        <button onclick="resetSelection()">새로고침</button>
+        <button onclick="showFortunes()">운세 뽑기</button>
+        <div id="slots">
+            <div>?</div>
+            <div>?</div>
+            <div>?</div>
+        </div>
+    </div>
+</body>
+</html>

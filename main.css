@@ -1,0 +1,121 @@
+html,body {
+	height:100%;
+	margin:0;
+	padding:0;
+	display:flex;
+	flex-direction:column;
+	/* 세로 정렬 */
+	justify-content:center;
+	/* 수직 정렬 */
+	align-items:center;
+	/* 수평 정렬 */
+}
+input[type="text"] {
+	width:100%;
+	height:80px;
+	font-size:60px;
+}
+input[type="number"] {
+	width:100%;
+	height:80px;
+	font-size: 60px;
+}
+button {
+	width:100%;
+	/* 전체 너비 사용 */
+	padding:20px;
+	/* 크고 편안한 탭 영역 */
+	font-size:50px;
+	/* 큰 글꼴 크기 */
+}
+#slots {
+	display:flex;
+	/* Flexbox 레이아웃 적용 */
+	justify-content:space-between;
+	/* 가로 중앙 정렬을 위해 */
+	gap:20px;
+	/* 슬롯 사이의 간격을 설정 */
+}
+/* 슬롯 머신의 크기 조정 */
+.fortune-slot {
+	overflow:hidden;
+	width:33.333%;
+	height:150px;
+	/* 고정된 높이 */
+	background-color:white;
+	border:1px solid #ccc;
+	/* 슬롯의 테두리 */
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	position:relative;
+	/* 글자 애니메이션을 위한 상대적 위치 설정 */
+}
+.fortune-slot div {
+	position:absolute;
+	top:0;
+	white-space: nowrap;
+	/* 글자가 줄바꿈 되지 않도록 설정 */
+}
+.fortune-slot p {
+	font-size:70px;
+	/* 슬롯 내부 글꼴 크기 증가 */
+	animation:spin 2s ease-in-out infinite;
+	/* 무한 반복 애니메이션 적용 */
+	white-space:nowrap;
+	/* 텍스트가 슬롯 밖으로 나가지 않도록 설정 */
+}
+#slots div {
+	font-size:70px;
+	/* 텍스트의 크기를 400px로 조정 */
+	/* 기타 필요한 스타일 속성 */
+}
+@keyframes spin {
+	0% {
+		transform:translateX(0);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
+/* 반응형 레이아웃을 위한 미디어 쿼리 */
+@media (max-width:600px) {
+	body {
+		font-size: 18px;
+		/* 작은 화면에서 글꼴 크기 증가 */
+	}
+}
+.interest-button.selected {
+	background-color:#4CAF50;
+	font-weight: bold;
+	/* 선택된 버튼 색상 */
+	color:white;
+}
+.button-row {
+	display:flex;
+	/* 버튼을 가로로 배열 */
+	justify-content:flex-start;
+	/* 버튼을 왼쪽 정렬 */
+	margin-bottom:10px;
+	/* 줄 사이의 여백 */
+}
+.interest-button {
+	margin-right:5px;
+	white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+    padding: 40px; /* 패딩 조정 */
+    margin-right: 10px; /* 마진 조정 */
+	font-size: 40px;
+	/* 버튼 사이 간격 */
+}
+.button-row:last-child .interest-button:last-child {
+	margin-right: 0;
+	/* 마지막 버튼 오른쪽 여백 제거 */
+}
+
+.fortune-대흉 { background-color: darkred; color: white; }
+.fortune-흉 { background-color: red; color: white; }
+.fortune-소흉 { background-color: lightcoral; color: white; }
+
+.fortune-대길 { background-color: darkgoldenrod; color: white; }
+.fortune-길 { background-color: yellow; color: black; }
+.fortune-소길 { background-color: lightyellow; color: black; }
